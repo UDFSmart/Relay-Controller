@@ -1,3 +1,4 @@
+#include "Stream.h"
 
 /*
  *    Copyright 2026 UDFOwner
@@ -19,13 +20,12 @@
 
 #include "SerialRelayController.h"
 
-SerialRelayController::SerialRelayController(SoftwareSerial& serial, const uint8_t channelsCount)
+SerialRelayController::SerialRelayController(Stream& serial, const uint8_t channelsCount)
   : RelayController(channelsCount), _serial(serial) {
 }
 
 void SerialRelayController::begin() {
-  _serial.begin(115200);
-  delay(200);
+  // None
 }
 
 void SerialRelayController::setOn(const uint8_t channel) {

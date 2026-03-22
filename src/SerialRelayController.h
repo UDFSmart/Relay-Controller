@@ -20,11 +20,9 @@
 
 #include "RelayController.h"
 
-#include <SoftwareSerial.h>
-
 class SerialRelayController : public RelayController {
 public:
-  SerialRelayController(SoftwareSerial& serial, const uint8_t channelsCount = 1);
+  SerialRelayController(Stream& serial, const uint8_t channelsCount = 1);
 
   void begin() override;
 
@@ -32,7 +30,7 @@ public:
   void setOff(const uint8_t channel) override;
 
 private:
-  SoftwareSerial& _serial;
+  Stream& _serial;
 
   void setRelayState(const uint8_t relay, bool state);
 };

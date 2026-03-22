@@ -24,8 +24,12 @@
  */
 
 #include <Arduino.h>
-#include <PinRelayController.h>
-#include <SerialRelayController.h>
+#include "PinRelayController.h"
+#include "SerialRelayController.h"
+
+#ifndef ESP32
+#include <SoftwareSerial.h>
+#endif
 
 // Pin definitions for SoftwareSerial (used by SerialRelayController)
 #define RELAY_RX 3  // GPIO3 (RX)
@@ -40,14 +44,21 @@ RelayController* relay = nullptr;
  */
 RelayController* createRelayController(bool useSerial = false) {
   if (useSerial) {
-    // Use static to ensure the SoftwareSerial object persists in memory
+// Use static to ensure the SoftwareSerial object persists in memory
+#ifdef ESP32
+    Serial1.begin(115200, SERIAL_8N1, 4, 5);
+    Stream& _serial = Serial1;
+#else
     static SoftwareSerial _serial(RELAY_RX, RELAY_TX);
-    return new SerialRelayController(_serial, 2); // 2-channel serial relay
+    _serial.begin(115200);
+#endif
+
+    return new SerialRelayController(_serial, 2);  // 2-channel serial relay
   }
 
   // Define pins for direct GPIO control
   static uint8_t pins[] = { 0, 2 };
-  return new PinRelayController(pins, 2); // 2-channel pin relay
+  return new PinRelayController(pins, 2);  // 2-channel pin relay
 }
 
 void setup() {
@@ -71,7 +82,7 @@ void loop() {
   for (uint8_t i = 0; i < 2; i++) {
     Serial.print(F("Turning ON channel: "));
     Serial.println(i);
-    
+
     relay->setOn(i);
     delay(1000);
 
@@ -82,7 +93,7 @@ void loop() {
 
     Serial.print(F("Turning OFF channel: "));
     Serial.println(i);
-    
+
     relay->setOff(i);
     delay(1000);
   }

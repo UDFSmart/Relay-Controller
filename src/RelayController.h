@@ -17,6 +17,7 @@
  */
 
 #pragma once
+#include <Arduino.h>
 #include <string.h>
 
 class RelayController {
