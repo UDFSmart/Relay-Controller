@@ -84,7 +84,7 @@ Powered by **STM8S103 microcontroller** for stable and efficient operation.
 2. **Include the Relay Controller header files in your sketch.**
 
 ```cpp
-#include "SerialRelayController.h" // To control this relay, we need the SerialRelayController class.
+#include <SerialRelayController.h> // To control this relay, we need the SerialRelayController class.
 ```
 
 **3. Create an instance of the SerialRelayController class and configure it.**
@@ -119,8 +119,13 @@ Powered by **STM8S103 microcontroller** for stable and efficient operation.
 ### Example
 
 ```cpp
+  #include <Arduino.h>
+  #include <SerialRelayController.h>
+
   #define RELAY_RX 3  // GPIO3 (RX)
   #define RELAY_TX 1  // GPIO1 (TX)
+
+  RelayController* relay = nullptr;
   
   RelayController* createRelayController() {
     static SoftwareSerial _serial(RELAY_RX, RELAY_TX);
@@ -130,17 +135,18 @@ Powered by **STM8S103 microcontroller** for stable and efficient operation.
   }
 
   void setup() {
-  relay = createRelayController();
-  relay->begin();
+    relay = createRelayController();
+    relay->begin();
+  }
 
+loop() {
   relay->setOn(1); // sending a command to turn on Relay #1
   relay->setOn(2); // sending a command to turn on Relay #2
+  delay(3000);
 
   relay->setOff(1); // sending a command to turn off Relay #1
   relay->setOff(2); // sending a command to turn off Relay #2
-}
-
-loop() {
+  delay(3000);
 }
 ```
 
