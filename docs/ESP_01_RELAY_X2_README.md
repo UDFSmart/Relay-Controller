@@ -3,7 +3,7 @@
 The Dual WiFi Relay Module is an advanced control solution built on the ESP-01 WiFi module and powered by the STM8S103 high-performance microprocessor. It enables seamless wireless control of a dual-channel relay via a mobile application, requiring only minimal setup within a local area network (LAN). Ideal for home automation, industrial control, and other IoT applications.
 
 
-<img src="docs/images/esp-01-relay-x2_preview.jpg" alt="Device preview" width="400">
+<img src="images/esp-01-relay-x2_preview.jpg" alt="Device preview" width="400">
 
 
 ## Features
@@ -23,7 +23,7 @@ Powered by **STM8S103 microcontroller** for stable and efficient operation.
 
 ## Pinout
 
-<img src="docs/images/esp-01-relay-x2.jpg" alt="Device preview" width="400">
+<img src="images/esp-01-relay-x2.jpg" alt="Device preview" width="400">
 
 
 | Pin/Port	                | Description                                                    |
