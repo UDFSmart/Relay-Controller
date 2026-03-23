@@ -139,15 +139,15 @@ Powered by **STM8S103 microcontroller** for stable and efficient operation.
     relay->begin();
   }
 
-loop() {
-  relay->setOn(1); // sending a command to turn on Relay #1
-  relay->setOn(2); // sending a command to turn on Relay #2
-  delay(3000);
+  void loop() {
+    relay->setOn(1); // sending a command to turn on Relay #1
+    relay->setOn(2); // sending a command to turn on Relay #2
+    delay(3000);
 
-  relay->setOff(1); // sending a command to turn off Relay #1
-  relay->setOff(2); // sending a command to turn off Relay #2
-  delay(3000);
-}
+    relay->setOff(1); // sending a command to turn off Relay #1
+    relay->setOff(2); // sending a command to turn off Relay #2
+    delay(3000);
+  }
 ```
 
 ## Using the library
