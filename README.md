@@ -20,6 +20,14 @@ A flexible, OOP-based Arduino library for controlling relays. This library provi
 * **AVR** (Arduino Uno, Nano, Mega, etc.)
 * **STM32**
 
+## Supported devices
+
+Below is a list of devices on which this lib is tested:
+
+[ESP8266 ESP-01 WIFI Wireless with 2CH Relay Module Board](https://github.com/UDFSmart/Relay-Controller/blob/main/docs/ESP_01_RELAY_X2_README.md)
+
+------
+
 ## Installation
 
 1.  Download the repository as a `.zip` file.
