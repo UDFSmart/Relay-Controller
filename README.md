@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Framework](https://img.shields.io/badge/Framework-Arduino-orange.svg)](https://www.arduino.cc/)
+![Framework](https://img.shields.io/badge/ESP32-green.svg)
 
 A flexible, OOP-based Arduino library for controlling relays. This library provides a clean hardware abstraction layer, allowing you to switch between direct GPIO pin control and Serial-based relay modules without changing your application logic.
 
