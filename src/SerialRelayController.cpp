@@ -1,5 +1,3 @@
-#include "Stream.h"
-
 /*
  *    Copyright 2026 UDFOwner
  *
@@ -19,6 +17,7 @@
  */
 
 #include "SerialRelayController.h"
+#include "Stream.h"
 
 SerialRelayController::SerialRelayController(Stream& serial, const uint8_t channelsCount)
   : RelayController(channelsCount), _serial(serial) {
@@ -42,10 +41,12 @@ void SerialRelayController::setRelayState(const uint8_t relay, bool state) {
 
   if (relay >= _channelsCount) return;
 
+  uint8_t hwRelay = relay + 1;
+
   byte cmd[4];
 
   cmd[0] = 0xA0;
-  cmd[1] = relay;
+  cmd[1] = hwRelay;
   cmd[2] = state ? 0x01 : 0x00;
   cmd[3] = cmd[0] + cmd[1] + cmd[2];
 
