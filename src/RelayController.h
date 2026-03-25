@@ -47,6 +47,10 @@ public:
     if (channel >= _channelsCount) return false;
     return _states[channel];
   }
+  
+  virtual uint8_t getChannelsCount() const {
+    return _channelsCount;
+  }
 protected:
   uint8_t _channelsCount;
   bool* _states = nullptr;
