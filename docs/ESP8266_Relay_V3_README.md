@@ -1,4 +1,4 @@
-#ESP8266 Relay V3
+# ESP8266 Relay V3
 
 This is a smart relay module based on the ESP-01/ESP-01S serial WiFi transceiver module. It's designed for smart home, IoT, and other DIY projects. With this smart relay, you can easily create your own smart switch to control any device using your phone or Wi-Fi.
 
