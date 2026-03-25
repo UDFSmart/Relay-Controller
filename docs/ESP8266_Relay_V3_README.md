@@ -4,7 +4,7 @@ This is a smart relay module based on the ESP-01/ESP-01S serial WiFi transceiver
 
 The kit includes: 1 ESP8266 relay module and 1 ESP-01 serial WiFi transceiver module.
 
-## Image
+## Images
 
 <img src="https://github.com/UDFSmart/Smart-Relay/blob/main/SerialSmartRelay/docs/images/esp-01_relay_x1_module.png" alt="Device preview" width="400">
 
