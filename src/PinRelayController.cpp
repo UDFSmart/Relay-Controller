@@ -31,21 +31,21 @@ PinRelayController::PinRelayController(const uint8_t* pins, const uint8_t count)
 void PinRelayController::begin() {
   for (uint8_t i = 0; i < _channelsCount; i++) {
     pinMode(_pins[i], OUTPUT);
-    digitalWrite(_pins[i], LOW);
+    digitalWrite(_pins[i], HIGH);
   }
 }
 
 void PinRelayController::setOn(const uint8_t channel) {
   if (channel >= _channelsCount) return;
 
-  digitalWrite(_pins[channel], HIGH);
+  digitalWrite(_pins[channel], LOW);
   _states[channel] = true;
 }
 
 void PinRelayController::setOff(const uint8_t channel) {
   if (channel >= _channelsCount) return;
 
-  digitalWrite(_pins[channel], LOW);
+  digitalWrite(_pins[channel], HIGH);
   _states[channel] = false;
 }
 
