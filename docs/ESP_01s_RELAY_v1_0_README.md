@@ -35,7 +35,3 @@ In the version, we use the GPIO0 of ESP-01S to control the Relay by Hight level.
      
   ** Work in progress... **
      
-
-## Using the library
-
-[Smart-Relay](https://github.com/UDFSmart/Smart-Relay)
