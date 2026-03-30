@@ -28,25 +28,47 @@ PinRelayController::PinRelayController(const uint8_t* pins, const uint8_t count)
   }
 }
 
+PinRelayController::PinRelayController(const uint8_t* pins, const uint8_t count, RelayCallback onCustomOn, RelayCallback onCustomOff)
+  : PinRelayController(pins, count) {
+
+  onRelayFunction = onCustomOn;
+  offRelayFunction = onCustomOff;
+}
+
 void PinRelayController::begin() {
   for (uint8_t i = 0; i < _channelsCount; i++) {
     pinMode(_pins[i], OUTPUT);
-    digitalWrite(_pins[i], HIGH);
+    setOffRelay(_pins[i]);
   }
 }
 
 void PinRelayController::setOn(const uint8_t channel) {
   if (channel >= _channelsCount) return;
 
-  digitalWrite(_pins[channel], LOW);
+  setOnRelay(_pins[channel]);
   _states[channel] = true;
 }
 
 void PinRelayController::setOff(const uint8_t channel) {
   if (channel >= _channelsCount) return;
 
-  digitalWrite(_pins[channel], HIGH);
+  setOffRelay(_pins[channel]);
   _states[channel] = false;
+}
+
+void PinRelayController::setOnRelay(const uint8_t pin) {
+  if (onRelayFunction == nullptr) {
+    digitalWrite(pin, LOW);
+  } else {
+    onRelayFunction(pin);
+  }
+}
+void PinRelayController::setOffRelay(const uint8_t pin) {
+  if (offRelayFunction == nullptr) {
+    digitalWrite(pin, HIGH);
+  } else {
+    offRelayFunction(pin);
+  }
 }
 
 PinRelayController::~PinRelayController() {

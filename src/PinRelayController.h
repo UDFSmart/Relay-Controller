@@ -21,9 +21,12 @@
 #include <Arduino.h>
 #include "RelayController.h"
 
+using RelayCallback = void (*)(const uint8_t pin);
+
 class PinRelayController : public RelayController {
 public:
   PinRelayController(const uint8_t* pins, const uint8_t count);
+  PinRelayController(const uint8_t* pins, const uint8_t count, RelayCallback onCustomOn, RelayCallback onCustomOff = nullptr);
   ~PinRelayController();
 
   void begin() override;
@@ -31,6 +34,12 @@ public:
   void setOn(const uint8_t channel) override;
   void setOff(const uint8_t channel) override;
 
+protected:
+  RelayCallback onRelayFunction = nullptr;
+  RelayCallback offRelayFunction = nullptr;
+
+  void setOnRelay(const uint8_t pin);
+  void setOffRelay(const uint8_t pin);
 
 private:
   uint8_t* _pins = nullptr;
