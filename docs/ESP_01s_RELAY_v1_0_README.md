@@ -79,10 +79,9 @@ In the version, we use the GPIO0 of ESP-01S to control the Relay by Hight level.
      
      Connect a DC 5V power to the GND and VCC.
 
-
-
   4) That's all, you can now use this device.
      
-     
 
-     
+     <img src="images/esp-01s/test_connection.png" alt="Device preview" width="400">
+
+     [Video](https://vt.tiktok.com/ZSHLanS3q/)
